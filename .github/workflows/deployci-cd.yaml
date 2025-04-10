@@ -25,5 +25,5 @@ jobs:
         with:
           host: ${{ secrets.VM_IP }}
           username: linuxserver.io
-          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: whoami
