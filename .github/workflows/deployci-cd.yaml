@@ -15,8 +15,8 @@ jobs:
 
       - name: Build and Push Images
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/web-1 ./web
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/db-1 ./db
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/web-1 .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/db-1 .
           docker push ${{ secrets.DOCKER_USERNAME }}/web-1
           docker push ${{ secrets.DOCKER_USERNAME }}/db-1
 
