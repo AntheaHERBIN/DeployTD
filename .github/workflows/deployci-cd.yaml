@@ -21,11 +21,9 @@ jobs:
           docker push ${{ secrets.DOCKER_USERNAME }}/db-1
 
       - name: Deploy to VM
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        run: |
-          ssh -i ~/.ssh/id_rsa ${{ secrets.VM_USER }}@${{ secrets.VM_IP }}<< 'EOF'
-          docker pull ${{ secrets.DOCKER_USERNAME }}/web-1
-          docker pull ${{ secrets.DOCKER_USERNAME }}/db-1
-          docker-compose up -d
-          EOF
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VM_IP }}
+          username: linuxserver.io
+          port: ${{ secrets.PORT }}
+          script: whoami
